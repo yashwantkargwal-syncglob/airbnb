@@ -1,9 +1,18 @@
 const path = require('path')
 const express = require("express");
+const mongoose = require('mongoose');
 const userRouter = require("./routes/userRouters");
 const {hostRouters,houses} = require("./routes/hostRouters");
 
 const app = express();
+
+// connect to MongoDB (single, centralized connection)
+const mongoURI = "mongodb+srv://zeni:12345@mongoprojects.rjsyibr.mongodb.net/";
+mongoose.connect(mongoURI).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    console.error('MongoDB connection error:', err);
+});
 
 // serve static assets from /public (public/output.css will be available at /output.css)
 app.use(express.static('public'));
