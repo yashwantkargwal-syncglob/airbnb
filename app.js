@@ -7,7 +7,7 @@ const {hostRouters,houses} = require("./routes/hostRouters");
 const app = express();
 
 // connect to MongoDB (single, centralized connection)
-const mongoURI = "mongodb+srv://zeni:12345@mongoprojects.rjsyibr.mongodb.net/";
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
