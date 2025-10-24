@@ -3,12 +3,11 @@ const express = require("express");
 const mongoose = require('mongoose');
 const userRouter = require("./routes/userRouters");
 const {hostRouters,houses} = require("./routes/hostRouters");
-require('dotenv').config()
 
 const app = express();
 
 // connect to MongoDB (single, centralized connection)
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = "mongodb+srv://zeni:12345@mongoprojects.rjsyibr.mongodb.net/";
 mongoose.connect(mongoURI).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
