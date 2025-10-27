@@ -12,7 +12,7 @@ const postAddHome =  async (req, res, next) => {
 }
 
 const getHomePage = async(req,res,next)=>{
-    res.render('home', {houses: Home.fetchAll(), pageTitle : "demoProject | Home"})
+    res.render('home', {houses: Home.fetchAll(), pageTitle : "ghar dekhiye Project | Home"})
 }
 
 const getConsoleLog = (req,res,next)=>{
