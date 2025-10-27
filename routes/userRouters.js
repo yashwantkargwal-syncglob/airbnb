@@ -1,15 +1,11 @@
 const path = require('path');
 const express = require("express");
-const {houses} = require('./hostRouters')
+const {houses} = require('./hostRouters');
+const { homeController } = require('../controller/home');
 const userRouter = express.Router();
 
-userRouter.use((req,res,next)=>{
-    console.log(req.url,req.method);  
-    next()  
-})
+userRouter.use(homeController.getConsoleLog)
 
-userRouter.get("/",async(req,res,next)=>{
-        res.render('home', {houses: houses, pageTitle : "airbnb | Home"})
-})
+userRouter.get("/",homeController.getHomePage)
 
 module.exports = userRouter;

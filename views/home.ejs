@@ -17,22 +17,40 @@
                 <p class="mt-2 text-gray-600">A tiny demo showing registered houses. Use the button above to add a new home.</p>
             </section>
             <section>
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Registered houses</h3>
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Registered Houses</h3>
 
-                <% if (houses && houses.length) { %>
-                    <ul class="grid gap-4 sm:grid-cols-2">
-                        <% houses.forEach((house) => { %>
-                            <li class="bg-white p-4 rounded-lg shadow-sm border">
-                                <h4 class="text-lg font-medium text-gray-800"><%= house.houseName %></h4>
-                            </li>
-                        <% }) %>
-                    </ul>
-                <% } else { %>
-                    <div class="rounded-md bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                        <p class="text-yellow-700">No houses registered yet. Click "Add home" to create one.</p>
+    <% if (houses && houses.length) { %>
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <% houses.forEach((house) => { %>
+                <li class="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition-shadow duration-200">
+                    <img src="<%= house.photo || 'https://i.pinimg.com/736x/4c/15/3b/4c153b6ffe8e2be5fd41a2e1f95534fd.jpg' %>" 
+                         alt="<%= house.houseName %>" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900"><%= house.houseName %></h4>
+                            <p class="text-sm text-gray-500 mt-1"><%= house.location %></p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-lg">$<%= house.price %>/night</span>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.176c.969 0 1.371 1.24.588 1.81l-3.382 2.46a1 1 0 00-.364 1.118l1.287 3.967c.3.921-.755 1.688-1.54 1.118l-3.382-2.46a1 1 0 00-1.176 0l-3.382 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.967a1 1 0 00-.364-1.118L2.049 9.394c-.783-.57-.38-1.81.588-1.81h4.176a1 1 0 00.95-.69l1.286-3.967z" />
+                                </svg>
+                                <span class="ml-1 text-gray-700 font-medium"><%= house.rating %></span>
+                            </div>
+                        </div>
                     </div>
-                <% } %>
-            </section>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <div class="rounded-md bg-yellow-50 border-l-4 border-yellow-400 p-4">
+            <p class="text-yellow-700">No houses registered yet. Click "Add home" to create one.</p>
+        </div>
+    <% } %>
+</section>
+
         </main>
 
         <footer class="mt-12 py-6">

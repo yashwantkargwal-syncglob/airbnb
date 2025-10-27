@@ -1,15 +1,8 @@
-const path = require('path')
 const express = require("express");
+const { homeController } = require('../controller/home');
 const hostRouters = express.Router();
 
-hostRouters.get("/add-home",(req,res,next)=>{
-    res.render('addHome', {pageTitle: "Add Home"})
-})
-const houses= [];
-hostRouters.post("/add-home", async (req, res, next) => {
-    houses.push({houseName: req.body.houseName})
-        res.render('homeAdd', { pageTitle: "Successfully" });
-});
+hostRouters.get("/add-home",homeController.getAddHome);
+hostRouters.post("/add-home",homeController.postAddHome);
 
 exports.hostRouters = hostRouters;
-exports.houses = houses;

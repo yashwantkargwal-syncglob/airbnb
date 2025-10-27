@@ -2,6 +2,7 @@ const path = require('path')
 const express = require("express");
 const userRouter = require("./routes/userRouters");
 const {hostRouters,houses} = require("./routes/hostRouters");
+const { errorController } = require('./controller/error');
 
 const app = express();
 app.use(express.static('public'));
@@ -13,10 +14,7 @@ app.set("views", path.join(__dirname, 'views'));
 app.use(userRouter);
 app.use("/host", hostRouters);
 
-app.use((req,res,next)=>{
-    res.status(404)
-    res.render('404',{pageTitle: "Not Found"})
-})
+app.use(errorController.getPageNotFound);
 
 const PORT = 5000;
 app.listen(PORT,()=>{
