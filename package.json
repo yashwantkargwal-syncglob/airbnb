@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "concurrently \"noghar dekhiye n app.js\" \"npm run build:css\"",
+    "start": "concurrently \"npm start app.js\" \"npm run build:css\"",
     "build:css": "tailwindcss -i ./views/input.css -o ./public/output.css --watch"
   },
   "author": "",
